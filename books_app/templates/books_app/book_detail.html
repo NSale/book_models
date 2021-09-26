@@ -1,0 +1,17 @@
+{% extends 'books_app/base.html' %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ book.title }}</h2>
+    <h2>{{ book.author }}</h2>
+    <h2>{{ book.rating }}</h2>
+    {% if book.is_bestselling %}
+        <h2>This book is bestseller.</h2>
+    {% endif %}
+    <br>
+
+    <a href="{% url 'books' %}">All books</a>
+{% endblock %}

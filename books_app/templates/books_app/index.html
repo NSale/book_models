@@ -1,0 +1,24 @@
+{% extends 'books_app/base.html' %}
+
+{% block title %}
+    All Books
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for book in books %}
+        <li>
+            <!--Depricated-->
+            <!--<a href="{% url 'book_details' book.id %}">{{ book.title }}</a>-->
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+            - from the author {{ book.author }},
+            has rating {{ book.rating }}{% if book.is_bestselling %} and is bestseller{% endif %}.
+        </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p>Total number of books: {{ total_number_of_books }}</p>
+    <p>Average rating of the books is: {{ average_rating }}</p>
+{% endblock %}
