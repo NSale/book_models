@@ -23,6 +23,8 @@ def book_details(request, slug):
     # except Exception as e:
     #     raise Http404('There is no book with that index')
     book = get_object_or_404(Book, slug=slug)
+    countries = book.published_countries.all().order_by('name')
     return render(request, 'books_app/book_detail.html', {
         'book': book,
+        'countries': countries,
     })
